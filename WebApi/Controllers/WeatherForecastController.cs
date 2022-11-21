@@ -38,8 +38,8 @@ namespace WebApi.Controllers
         [HttpGet]
         [Route("GetUser")]
         public string GetUser()
-        {
-            return User.Identity.Name;
+       {
+            return User.Identity.Name.ToString();
         }
     }
 

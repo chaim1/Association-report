@@ -46,7 +46,38 @@ namespace WebApi
 
             app.UseHttpsRedirection();
 
+            //app.UseCors(x => x
+            //.AllowAnyOrigin()
+            //.AllowAnyMethod()
+            //.AllowAnyHeader());
+
+
+            //app.UseCors("AllowAll");
+            //app.UseCors(x => x
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader()
+            //    .WithOrigins("http://localhost:4200")
+            //    .SetIsOriginAllowed(origin => true)
+            //    .AllowCredentials());
+
             app.UseRouting();
+
+            //app.UseCors(builder =>
+            //    builder.WithOrigins("http://localhost:4200")
+            //    .AllowAnyHeader()
+            //    .AllowCredentials()
+            //    .AllowAnyMethod());
+            app.UseCors(options =>
+            {
+                options.SetIsOriginAllowed(origin => true);
+                //options.AllowAnyOrigin();
+                options.AllowAnyHeader();
+                options.AllowAnyMethod();
+                options.AllowCredentials();
+        });
+
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

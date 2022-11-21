@@ -1,1 +1,48 @@
-<p>adding-donation works!</p>
+<div class="card" dir="rtl">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <h5 class="flex flex-wrap align-items-center justify-content-center py-5 m-3">הוספת דיווח על עמותה</h5>
+
+        <div class="flex flex-wrap align-items-center justify-content-center">
+            <div class="py-5 m-3 field-required">
+                <label class="field-label"></label>
+                <input type="text" formControlName="entityName" pInputText class="" placeholder="שם הישות המדינית הזרה">
+            </div>
+            <div class="py-5 m-3">
+                <p-inputNumber formControlName="amountOfDonation" [minFractionDigits]="1" mode="decimal" [min]="0"
+                     placeholder="סכום התרומה בשח"></p-inputNumber>
+            </div>
+
+            <div class="py-5 m-3">
+                <p-dropdown [options]="entityTypeList" formControlName="entityType" optionLabel="name"
+                    optionValue="code"  placeholder="סוג הישות המדינית הזרה"></p-dropdown>
+            </div>
+
+            <div class="py-5 m-3">
+                <input type="text" formControlName="purposeOfDonation" pInputText class="" placeholder="יעוד התרומה">
+            </div>
+            <div class="py-5 m-3">
+                <input type="text" formControlName="conditionsDonation" pInputText class="" placeholder="התנאים לתרומה">
+            </div>
+            <div class="py-5 m-3">
+                <p-dropdown [options]="currencyTypeList" formControlName="currencyType" optionLabel="name"
+                    optionValue="code" placeholder="סוג מטבע"></p-dropdown>
+            </div>
+            <div class="py-5 m-3">
+                <p-inputNumber formControlName="exchangeRate" [minFractionDigits]="1" mode="decimal" [min]="0"
+                    [max]="100" placeholder="שער ההמרה"></p-inputNumber>
+            </div>
+        </div>
+
+
+        <div class=" flex flex-wrap align-items-center justify-content-center">
+            <p-button (click)="cleareFrom()" type="p-button" class="py-5 m-3" label="ניקוי" icon="pi pi-check" iconPos="left">
+            </p-button>
+            <p-button type="submit" class="py-5 m-3" label="שמירה" icon="pi pi-check" iconPos="left">
+            </p-button>
+        </div>
+    </form>
+</div>
+<div class="py-5 m-3">
+    <!-- <app-new-salary-table *ngIf="showTableResult" [salaryResult]="salaryResult" ></app-new-salary-table> -->
+</div>
